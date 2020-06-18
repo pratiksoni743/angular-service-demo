@@ -1,0 +1,35 @@
+<p>reqres works!</p>
+
+<input type="text" [(ngModel)]="userId">
+<input type="button" value="Get Data By Id" (click)="getData()">
+
+<h4>{{selectedUser | json}}</h4>
+<img *ngIf="selectedUser && selectedUser['avatar']" [src]="selectedUser['avatar']" alt="User Image">
+
+<hr>
+
+<input type="text" [(ngModel)]="postUser.Name">
+<input type="text" [(ngModel)]="postUser.Job">
+<input type="button" value="Post Data" (click)="postData()">
+
+<hr>
+
+<input type="button" value="Page 1" (click)="getDataByPage(1)">
+<input type="button" value="Page 2" (click)="getDataByPage(2)">
+
+<table border="1" *ngIf="userList.length">
+    <th>Id</th>
+    <th>Email</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Avatar</th>
+    <tr *ngFor="let user of userList">
+        <td>{{user.id}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.first_name}}</td>
+        <td>{{user.last_name}}</td>
+        <td><img *ngIf="user && user.avatar" [src]="user.avatar" alt="User Image"></td>
+    </tr>
+</table>
+
+<h4>{{userList | json}}</h4>
